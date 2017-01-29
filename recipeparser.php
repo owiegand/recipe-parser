@@ -18,12 +18,12 @@ function ParseRecipeData($RecipeURL){
 	$URLHostName = parse_url($RecipeURL,PHP_URL_HOST);
 	if($URLHostName == "www.delish.com"){
 		//Call The Parser For Delish.com
-		return DelishParser($xpath);
+		return DelishParser($xpath, $RecipeURL);
 	}
-	echo "testing";
+	
 }
 //This Function Will Handle Recipes on Delish's Website
-function DelishParser($WebsiteXPath){
+function DelishParser($WebsiteXPath, $URL){
 	//Time It Takes To Make Dish
 	$TimeToMake = $WebsiteXPath->query("//*[@id='site-wrapper']/article/div[1]/div[2]/section/section[1]/div[1]/time")->item(0)->nodeValue;
 	//Time To Prep Dish
@@ -50,12 +50,12 @@ function DelishParser($WebsiteXPath){
 	//Recipe Title
 	$Title = $WebsiteXPath->query("//*[@id='site-wrapper']/article/header/h1")->item(0)->nodeValue; 
 	
-	return CreateReturnJSON($TimeToMake, $PrepTime, $ServingAmount, $IngredientsList, $DirectionsList, $Title);
+	return CreateReturnJSON($TimeToMake, $PrepTime, $ServingAmount, $IngredientsList, $DirectionsList, $Title, $URL, "Delish.com");
 }
 //This function will be used to put together all the data into a returnable format
-function CreateReturnJSON($TimeToMakeDish, $DishPrepTime, $DishServingAmount, $IngredientList, $Direction, $DishTile){
+function CreateReturnJSON($TimeToMakeDish, $DishPrepTime, $DishServingAmount, $IngredientList, $Direction, $DishTitle, $URL, $Source){
 	$RecipeInfo = array();
-	$RecipeInfo['title'] = $DishTile;
+	$RecipeInfo['title'] = $DishTitle;
 	$RecipeInfo['yield'] = $DishServingAmount;
 	
 	$CookTimeArray = array();
@@ -66,6 +66,8 @@ function CreateReturnJSON($TimeToMakeDish, $DishPrepTime, $DishServingAmount, $I
 	$RecipeInfo['time'] = $CookTimeArray;
 	$RecipeInfo['ingredients'] = $IngredientList;
 	$RecipeInfo['directions'] = $Direction;
+	$RecipeInfo['url'] = $URL;
+	$RecipeInfo['source'] = $Source;
 	
 	return json_encode($RecipeInfo);
 }
