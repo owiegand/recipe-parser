@@ -70,7 +70,8 @@ Most of updates and contributions to this libaray will come by adding new websit
   $DirectionsList = array(); //List of Directions
   $Title
   ```
-  
+4. You then need to pass these values into the CreateReturnJSON function
+
 ### Intergration of Recipe Parsers
 Coming Soon
 
