@@ -72,7 +72,7 @@ Most of updates and contributions to this libaray will come by adding new websit
   ```
 4. You then need to pass these values into the CreateReturnJSON function
 
-### Intergration of Ingredient Parsers
+### Intergration of 3rd Party Ingredient Parsers
 Current Recipe Parser ships with this implementation:
 ```
 function ParseIngreident($IngreidentString){
