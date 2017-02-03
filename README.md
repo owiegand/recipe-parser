@@ -79,5 +79,5 @@ function ParseIngreident($IngreidentString){
 	return $IngreidentString;
 }
 ```
-
+This function allows you to add custom logic to how this parser handles and returns ingredients. With no changes to the above function, it will return the default ingredient string. This would be a perfect place to integrate [ingredient-parser]https://github.com/owiegand/ingredient-parser
 
