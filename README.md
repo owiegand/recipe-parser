@@ -5,7 +5,7 @@ This PHP libaray is used to parse recipe websites and return ingredients, direct
 ```
 $recipeData = ParseRecipeData($url);
 ```
-Once the libaray has been imported to your working directory and the recipeparser.php file included in your current php file. Call the ParseRecipeData and pass in your recipe URL. Returned will be a JSON array containing data from the URL passed.
+Once the libaray has been imported to your working directory and the recipeparser.php file included in your current php file. Call the ParseRecipeData and pass in your recipe URL. Returned will be a JSON string containing data from the URL passed.
 
 Possible JSON Stinrg Return:
 ```
@@ -45,13 +45,13 @@ More spported websites will be added through regular updates.
 ### How To Contribute
 Most of updates and contributions to this libaray will come by adding new websites that this parser can handle. This libaray creates a very simple way to add new "website parsers". This is the step by step process for adding a new process:
 
-1. Create a parsing function instead of recipeparser.php
+1. Create a parsing function inside of recipeparser.php
 
   ```
   function <WebsiteName>Parser($WebsiteXPath, $URL){
   }
   ```
-2. Inside of the PHP function ParseRecipeData in recipeparser.php, a new if cases needs to be set up to catch the wesbites host name. EG. for foodnetwork.com
+2. Inside of the PHP function ParseRecipeData in recipeparser.php, a new if case needs to be set up to catch the wesbites host name. EG. for foodnetwork.com
 
   ```
   if($URLHostName == "www.foodnetwork.com"){
