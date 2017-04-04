@@ -86,6 +86,6 @@ This function allows you to add custom logic to how this parser handles and retu
 {
   "Icon": "fa-cutlery"
 }
-<GITHUBPARSER>
+</GITHUBPARSER>
 -->
 
